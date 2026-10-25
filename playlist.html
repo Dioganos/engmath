@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="tr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Oynatma Listesi — Bölüm 1 + 3 — Engineering Mathematics</title>
+<style>
+:root{--bg:#f4f6f9;--fg:#14213d;--mut:#5b6577;--card:#fff;--bd:#d9dee7;--ac:#0f766e;--acbg:#e0f2ef;--ok:#15803d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root{--bg:#10151d;--fg:#e6ebf3;--mut:#9aa6b8;--card:#18202c;--bd:#2a3546;--ac:#4fd1c0;--acbg:#12312e;--ok:#4ade80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:0;z-index:5;background:var(--card);box-shadow:0 1px 8px rgba(0,0,0,.08);padding:12px 20px;border-bottom:1px solid var(--bd);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0;flex:1 1 220px}
+#pg{font-size:.85rem;color:var(--mut)}
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:24px;padding:20px;max-width:1320px;margin:0 auto}
+main{min-width:0}
+aside{max-height:calc(100vh - 92px);overflow:auto;position:sticky;top:72px;align-self:start}
+.vid{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+h2{font-size:1.4rem;margin:4px 0 4px}
+.sub{color:var(--mut);font-size:.9rem;margin:0 0 10px}
+.ctl{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+button,.lnk{font:inherit;padding:8px 14px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--fg);cursor:pointer;text-decoration:none;transition:border-color .15s,background .15s}
+button:hover,.lnk:hover{border-color:var(--ac)}
+button.p{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.grp{background:var(--card);border:1px solid var(--bd);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.grp h3{margin:0;padding:10px 12px;font-size:.92rem;font-weight:600;position:sticky;top:0;background:var(--card);border-bottom:1px solid var(--bd)}
+.grp h3 small{color:var(--mut);font-weight:400}
+.it{display:flex;gap:8px;align-items:center;width:100%;text-align:left;border:0;border-top:1px solid var(--bd);border-radius:0;padding:7px 12px;font-size:.88rem;background:none}
+.grp h3+.it{border-top:0}
+.it:hover{background:var(--acbg)}
+.it.on{background:var(--acbg);color:var(--ac);font-weight:600}
+.it .n{width:26px;flex:none;color:var(--mut);font-size:.8rem;font-weight:400}
+@media(max-width:900px){.wrap{grid-template-columns:1fr;padding:12px;gap:16px}aside{position:static;max-height:60vh}header{padding:10px 12px}}
+</style></head><body>
+<header><h1>Oynatma Listesi — Bölüm 1 + 3</h1><span id="pg"></span><a class="lnk" href="index.html">Siteye dön</a></header>
+<div class="wrap"><main><div class="vid"><div id="pl"></div></div><h2 id="t"></h2><p class="sub" id="st"></p><div class="ctl"><button id="pv">Önceki</button><button class="p" id="nx">Sonraki</button></div></main><aside id="s"></aside></div>
+<script>
+const G=[["Bölüm 1 — Diferansiyel Denklemler",[
+["tCB-D3zMpms","Diferansiyel Denklemler : 1. Derece Diferansiyeller ve Çözüm Teknikleri (www.buders.com)"],
+["Vr-U7RFfHtQ","Diferansiyel Denklemler : Ayrılabilir Diferansiyel Denklemler (Separable Differential Equations)"],
+["0QQvwhFuS7w","Diferansiyel Denklemler : Ayrılabilir Diferansiyel Denklemler Örnek Soru-1 (İngilizce)"],
+["4QQBzrbqlxg","Diferansiyel Denklemler : Bakteri Artış Hızı Problemi Sorularının Diferansiyel Denklemler ile Çözümü"],
+["FtFRt6i8S7E","Diferansiyel Denklemler : Üstel Artış Problemi Sorularının Diferansiyel Denklemler ile Çözümü"],
+["E-dqBTCKMZs","Diferansiyel Denklemler : Üstel Artış ve Azalış Problemi Örnek Soru-1 (Exponential Growth and Decay)"],
+["qUQXiOuFLXg","Diferansiyel Denklemler : Üstel Artış ve Azalış Problemi Örnek Soru-2 (Exponential Growth and Decay)"],
+["QFJ9yb6VpNw","Diferansiyel Denklemler : Üstel Artış ve Azalış Problemi Örnek Soru-3 (Exponential Growth and Decay)"],
+["z0xNjT_3a7M","Diferansiyel Denklemde Oran Problemi Örneği-1 (www.buders.com)"],
+["WEoyG8icUWs","Diferansiyel Denklemde Oran Problemi Örneği-2 (www.buders.com)"],
+["n_Ls4RpUPyQ","Diferansiyel Denklemde Karışım Problemi Örneği-1 (www.buders.com)"],
+["8kEa0mLHh3Q","Diferansiyel Denklemde Karışım Problemi Örneği-2 (www.buders.com)"],
+["OJz2sWkgOO4","Diferansiyel Denklemler : Newton'un Soğuma Yasası (Newton's Law of Cooling)"],
+["uTwZVkbJAKg","Diferansiyel Denklemler : Newton'un Soğuma Yasası Örnek Soru-1 (Newton's Law of Cooling)"],
+["p5yXXAC3TnE","Diferansiyel Denklemler : Newton'un Soğuma Yasası Örnek Soru-2 (Newton's Law of Cooling)"],
+["Xn54yWirP2k","Diferansiyel Denklemler : Newton'un Soğuma Yasası Örnek Soru-3 (Newton's Law of Cooling) (İngilizce)"],
+["PI6x-gPhkoc","Diferansiyel Denklemler : Lojistik Büyüme (Logistic Growth)"],
+["_mG0JGk1TxQ","Diferansiyel Denklemler : Lojistik Büyüme Diferansiyel Denkleminin Çözümü (Logistic Growth)"],
+["thmC8m7MLQU","Diferansiyel Denklemler : Lojistik Büyüme Örnek Soru-1 (İngilizce) (Logistic Growth)"],
+["QvNfcrS3fs4","Diferansiyel Denklemler : Lojistik Büyüme Örnek Soru-2 (İngilizce) (Logistic Growth)"],
+["IZ5mpmGYdO4","Diferansiyel Denklemler : İntegral Çarpanı Metodu (1.Derece Lineer Diferansiyelleri Çözme)"],
+["9aaDj1HLEbw","Diferansiyel Denklemler : İntegral Çarpanı Metodu Örnek Soru-1 (First Order Linear Dif. Equations)"],
+["K2IIS9aK8j4","Diferansiyel Denklemler : 1. Mertebe Diferansiyelin Sabitlerin Değişimi Metodu ile Çözümü"],
+["Z1VqZxZHpXY","Diferansiyel Denklemler : 1. Mertebe Diferansiyelde Sabitlerin Değişimi Metodu Örnek Soru-1"],
+["Pu_hHixggu0","Diferansiyel Denklemler : 1. Mertebe Diferansiyelde Sabitlerin Değişimi Metodu Örnek Soru-2"],
+["ceBcMAE-BO8","Diferansiyel Denklemler : 1. Mertebe Diferansiyelde Sabitlerin Değişimi Metodu Örnek Soru-3"],
+["4bcY_xS1NMw","Diferansiyel Denklemler : 1. Derece Homojen Diferansiyellerin Çözümü (y=vx Metodu) (www.buders.com)"],
+["5p-vSS59GXA","Diferansiyel Denklemler : Homojen Hale Getirilerek Çözülebilen 1. Derece Diferansiyeller"],
+["y0xvwiNIye0","Diferansiyel Denklemler : Homojen Hale Getirilerek Çözülebilen Diferansiyeller Örnek Soru-1"],
+["EQMHdzox__w","Diferansiyel Denklemler : Homojen Hale Getirilerek Çözülebilen Diferansiyeller Örnek Soru-2"],
+["M678cTMUF6o","Diferansiyel Denklemler : 1. Derece Diferansiyelde Özel Değişken Değiştirmeler-1 (www.buders.com)"],
+["bEVvBPj_So4","Diferansiyel Denklemler : 1. Derece Diferansiyelde Özel Değişken Değiştirmeler-2"],
+["zsPYW9ABDoE","Diferansiyel Denklemler : 1. Derece Diferansiyelde Özel Değişken Değiştirmeler-2 (Örnek Soru)"],
+["5dQsmBOIKxI","Diferansiyel Denklemler : Yapılacak Dönüşümün Verildiği 1. Derece Diferansiyellerin Çözümü"],
+["L_QTUZ3eYyY","Diferansiyel Denklemler : 2. Derece Diferansiyeli 1. Derece Diferansiyele Dönüştürüp Çözme"],
+["xb8yZBYevb8","Diferansiyel Denklemler : Bernoulli Diferansiyel Denklemi (www.buders.com)"],
+["-RwBh4E0lVc","Diferansiyel Denklemler : Bernoulli Diferansiyeli Çözümlü 2 Örnek Soru (www.buders.com)"],
+["9XQf_zOfSN8","Diferansiyel Denklemler : Bernoulli Diferansiyel Denkleminin Çözümünde Kısa Yol"],
+["5YbT7NzI8NI","Diferansiyel Denklemler : Bernoulli Diferansiyel Denkleminin Çözümünde Kısa Yol Örnek Soru-1"],
+["9sG3aViHWt0","Diferansiyel Denklemler : Bernoulli Diferansiyel Denkleminin Çözümünde Kısa Yol Örnek Soru-2"],
+["bm7hs-ZgTyo","Diferansiyel Denklemler : Tam Diferansiyel Denklemler (Exact Differential Equations)"],
+["n5Yj5nuzLEc","Diferansiyel Denklemler : Tam Diferansiyel Denklem Çözümünde 2.Yol (Exact Differential Equations)"],
+["Hc9ArRx6Bg8","Diferansiyel Denklemler : Tam Diferansiyel Denklemler İleri Düzey Örnek Soru-1"],
+["-9vQPxi1nfA","Diferansiyel Denklemler : Tam Diferansiyel Denklem Çözümünde 2.Yol Örnek Soru-1"],
+["tQa7ny82lUA","Diferansiyel Denklemler : Tam Diferansiyel Denklem Çözümünde 2.Yol Örnek Soru-2"],
+["THTplsaNWyc","Diferansiyel Denklemler : Tam Diferansiyel Denklem Çözümünde 2.Yol Örnek Soru-3"],
+["xrSr6N8iAMo","Diferansiyel Denklemler : İntegral Çarpanı Yardımıyla Tam Olmayan Diferansiyelleri Çözme"],
+["da93PrrEB4k","Diferansiyel Denklemler : Tam Olmayan Diferansiyeli x^m*y^n Çarpanı ile Tam Yaparak Çözme"],
+["bkzkbjuwBKw","Diferansiyel Denklemler : Tam Olmayan Diferansiyellerde İntegral Çarpanı Verildiğinde Çözüm"],
+["9Iv1_NoC1vo","Diferansiyel Denklemler : Tam Diferansiyelde İntegral Çarpanı Metodu Örnek Soru-1"],
+["b5SwvbUTEd4","Diferansiyel Denklemler : Tam Diferansiyelde İntegral Çarpanı Metodu Örnek Soru-2"],
+["IyuO9NvoIWU","Diferansiyel Denklemler : Tam Diferansiyelde İntegral Çarpanı Metodu Örnek Soru-3"]
+]],
+["Bölüm 3 — Lineer Cebir",[
+["DJ7DoGoU9E0","Lineer Cebir : Lineer Denklem Sistemleri ve Matrisler ile Gösterimi (www.buders.com)"],
+["HPANC4V4FkA","Lineer Cebir : Elementer (Temel) Satır İşlemleri (www.buders.com)"],
+["dSHHAMMs8DY","Lineer Cebir : Satırca Denk Matrisler (Row Equivalent Matrix)"],
+["5L0Jsi-N-aM","Lineer Cebir : Lineer Denklem Sistemlerinin Çözüm Yöntemleri (www.buders.com)"],
+["APaxPQTy8HY","Lineer Cebir : Gauss Yok Etme Metodu (www.buders.com)"],
+["GVQ5iK6CRpU","Lineer Cebir : 4x4 Gauss Yok Etme Metodu Örneği (www.buders.com)"],
+["SV682ScLkHQ","Lineer Cebir : Gauss Jordan Yok Etme Metodu (www.buders.com)"],
+["NZIoSgAPLKE","Lineer Cebir : Lineer Denklem Sistemlerinin Çözüm Durumları (www.buders.com)"],
+["uB2N3D5KobI","Lineer Cebir : Lineer Denklem Sistemlerinde Çözüm Durumları Örnek Soru (2x2)"],
+["4TjeCAN17HE","Lineer Cebir : Lineer Denklem Sistemlerinde Çözüm Durumları Örneği (www.buders.com)"],
+["6ihvPZ0ugsc","Lineer Cebir : Sonsuz Çözüme Sahip Lineer Denklem Sistemi Örneği (www.buders.com)"],
+["kxMyYeD0pBI","Lineer Cebir : Çözümü Olmayan Lineer Denklem Sistemi Örneği (www.buders.com)"],
+["vYeND8TUcIE","Lineer Cebir : Eşelon Matrisi (Row Echelon Form)  (www.buders.com)"],
+["7oYVaQhzeOo","Lineer Cebir : Lineer Denklem Sistemlerinin Eşelon Matris Forma Getirilerek Çözümü (www.buders.com)"],
+["8soDeepZf6k","Lineer Cebir : İndirgenmiş Eşelon Matrisi (Reduced Row Echelon Form) (www.buders.com)"],
+["eZbtgWuRxv8","Lineer Cebir : 3x4 Lineer Denklem Sistemi Örnek Soru"],
+["m2z7Y7Q7qMw","Lineer Cebir : Homojen Lineer Denklem Sistemleri (Homogeneous System of Linear Equations)"],
+["bH7F-tnsXVo","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-1"],
+["6RgGf9TFMw8","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-2"],
+["_F5DqZIKwJU","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-3"],
+["ELh7i8GM4fQ","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-4"],
+["-yw2sQkF_Bw","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-5"],
+["mQj77lucuxQ","Lineer Cebir : Homojen Lineer Denklem Sistemleri Örnek Soru-6"],
+["GJCnIXP_3jA","Lineer Cebir : Homojen Lineer Denklem Sistemleri İngilizce Örnek Soru-1"],
+["p0wu5mU4JDQ","Lineer Cebir : Matrislerde Toplama, Çıkarma ve Çarpma (www.buders.com)"],
+["KamnTgAINuA","Lineer Cebir : Matrislerde İşlemler Örnek Soru-1"],
+["IypiKXnpBU0","Lineer Cebir : Matrislerde İşlemler Örnek Soru-2"],
+["kA0ZKzxUeiA","Lineer Cebir : Matrislerde İşlemler Örnek Soru-3"],
+["yfptmrSVfhM","Lineer Cebir : Matrislerde İşlemler Örnek Soru-4"],
+["LJ3WzHna3SM","Lineer Cebir : Matrislerin Tersini Bulma (Elementer Satır İşlemleri  Metodu)"],
+["j98C1k7ojZQ","Lineer Cebir : 4x4 Matrisin Tersinini Bulma Örnek Soru"],
+["TvzkTc3x19Y","Lineer Cebir : Ters Matris Yardımıyla Lineer Denklem Sistemlerini Çözme (www.buders.com)"],
+["dg9Zp1jPSqU","Lineer Cebir : Ters Matris Yardımıyla Lineer Denklem Sistemlerini Çözme Örnek Soru-1"],
+["ndtNgoYqZtU","Lineer Cebir : Determinant Hesaplama (www.buders.com)"],
+["h4cCHKI-e8k","Lineer Cebir : Minör ve Kofaktör Hesaplama (www.buders.com)"],
+["xGv8hngB6tY","Lineer Cebir : Kofaktör ile Determinant Hesaplama (www.buders.com)"],
+["DlwYWA0P7lY","Lineer Cebir : Determinant Özellikleri (www.buders.com)"],
+["UVMk_dmJBXM","Lineer Cebir : Determinant Özellikleri Ek Bilgi"],
+["x9FDJK_GEMA","Lineer Cebir : Vize ve Finalde Çıkabilecek Sorular-8 (www.buders.com)"],
+["htjta9LvI_k","Lineer Cebir : Determinant Özellikleri Örnek Soru-1"],
+["2agIlCgnB14","Lineer Cebir : Determinant Özellikleri Örnek Soru-2"],
+["sDXXLehhr0E","Lineer Cebir : Determinant Özellikleri Örnek Soru-3"],
+["tHm0jEoGxKU","Lineer Cebir : Determinant Özellikleri Örnek Soru-4"],
+["4oRPQCVRjgQ","Lineer Cebir : Determinant Özellikleri Örnek Soru-5"],
+["1LlVfR2qAE8","Lineer Cebir : Determinant Özellikleri Örnek Soru-6"],
+["7j09zK1NPHs","Lineer Cebir : Determinant Özellikleri Örnek Soru-7"],
+["DgHC7p3Oees","Lineer Cebir : Determinant Özellikleri Örnek Soru-8 (Properties of Determinant)"],
+["nYwtnrCwhpM","Lineer Cebir : Determinant Özellikleri Örnek Soru-9 (Properties of Determinant)"],
+["OCNnTVlwuvc","Lineer Cebir : Determinant Özellikleri Örnek Soru-10 (Properties of Determinant)"],
+["KDyx1gmX9c8","Lineer Cebir : Bir Matrisin Tersinin Varolma Şartları (Singular - Nonsingular) (Tekil-Tekil Olmayan)"],
+["R0NibwbtJJ0","Lineer Cebir : Ek Matris (Adjoint Matrix) (www.buders.com)"],
+["EWqj9telgQ8","Lineer Cebir : Ek Matris Yardımıyla Ters Matris Bulma (www.buders.com)"],
+["eoEA6KMc6Xw","Lineer Cebir : Ek Matris Yardımıyla Ters Matris Bulma Örnek Soru-1"],
+["EW5bi6tQtqk","Lineer Cebir : 2x2 Matrislerin Tersini Kısa Yoldan Bulma (www.buders.com)"],
+["1pH70nwArY4","Lineer Cebir : Ek Matrise Ait Özellikler (Adjoint Matrix)"],
+["DNfl71e1Seo","Lineer Cebir : Ek Matristen Kendisini Oluşturan Matrisi Bulma (Finding Original Matrix from Adj(A))"],
+["f1pfErXgM2k","Lineer Cebir : Ek Matristen Kendisini Oluşturan Matrisi Bulma (3x3 Matris) Örnek Soru"],
+["ClQf6nPgdIE","Lineer Cebir : Ters Matris Özellikleri Örnek Soru-1"],
+["DJirJNSdXDQ","Lineer Cebir : Ters Matris Özellikleri Örnek Soru-2"],
+["ndkYr3ALz_E","Lineer Cebir : Ters Matris Özellikleri Örnek Soru-3"],
+["Td0jkOhlLkQ","Lineer Cebir : Cramer Metodu (www.buders.com)"],
+["kEtcDJcsez4","Lineer Cebir : 4x4 Lineer Denklem Sisteminde Cramer Metod Örneği"]
+]]];
+const flat=[];
+G.forEach((g,gi)=>g[1].forEach(v=>flat.push({gi,id:v[0],n:v[1]})));
+const $=id=>document.getElementById(id);
+const KEY='plc';
+let cur=0,player=null,ready=false,errRun=0;
+try{const sv=localStorage.getItem(KEY);const i=sv?flat.findIndex(v=>v.id===sv):-1;if(i>=0)cur=i}catch(e){}
+function save(){try{localStorage.setItem(KEY,flat[cur].id)}catch(e){}}
+function build(){
+ let s='',k=0;
+ G.forEach(g=>{
+  s+='<div class="grp"><h3>'+g[0]+' <small>('+g[1].length+' video)</small></h3>';
+  g[1].forEach((v,j)=>{s+='<button class="it" data-k="'+k+'"><span class="n">'+(j+1)+'</span>'+v[1].replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</button>';k++});
+  s+='</div>';
+ });
+ $('s').innerHTML=s;
+ $('s').querySelectorAll('.it').forEach(b=>b.onclick=()=>play(+b.dataset.k));
+}
+function mark(scroll){
+ const v=flat[cur];
+ $('t').textContent=v.n;
+ $('st').textContent=G[v.gi][0]+' · '+(cur+1)+' / '+flat.length;
+ $('pg').textContent=(cur+1)+' / '+flat.length;
+ document.title=v.n+' — Oynatma Listesi';
+ $('s').querySelectorAll('.it').forEach(b=>{
+  const on=+b.dataset.k===cur;
+  b.classList.toggle('on',on);
+  if(on&&scroll){
+   const a=$('s');
+   if(a.scrollHeight>a.clientHeight+2){a.scrollTo({top:b.offsetTop-a.offsetTop-a.clientHeight/2+b.offsetHeight/2,behavior:'smooth'})}
+   else b.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
+ });
+}
+function play(i,auto){
+ cur=((i%flat.length)+flat.length)%flat.length;
+ save();mark(true);
+ if(!ready)return;
+ if(auto===false)player.cueVideoById(flat[cur].id);
+ else player.loadVideoById(flat[cur].id);
+}
+function next(){play(cur+1)}
+$('pv').onclick=()=>play(cur-1);
+$('nx').onclick=next;
+function onYouTubeIframeAPIReady(){
+ player=new YT.Player('pl',{
+  width:'100%',height:'100%',videoId:flat[cur].id,
+  playerVars:{rel:0,modestbranding:1,playsinline:1},
+  events:{
+   onReady:()=>{ready=true},
+   onStateChange:e=>{
+    if(e.data===YT.PlayerState.ENDED){errRun=0;next()}
+    else if(e.data===YT.PlayerState.PLAYING)errRun=0;
+   },
+   onError:()=>{
+    errRun++;
+    if(errRun>=flat.length){errRun=0;return}
+    next();
+   }
+  }
+ });
+}
+build();mark(true);
+(function(){const t=document.createElement('script');t.src='https://www.youtube.com/iframe_api';document.head.appendChild(t)})();
+</script>
+</body></html>
